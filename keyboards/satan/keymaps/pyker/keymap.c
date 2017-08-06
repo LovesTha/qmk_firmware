@@ -35,7 +35,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define SPACEDUAL LT(_SPC, KC_SPACE)
 #define ENTERDUAL CTL_T(KC_ENT)
 
-#define KC_00   M(0)
+#define KC_KP_00   M(0)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -81,23 +81,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Keymap _TAB: Function Layer
    * ,-----------------------------------------------------------.
-   * |   |   |   |   |   |   |   |   |   |   |   |   |   |  RESET|
+   * |   |   |   |   |   |   |   | = | / | * | - |   |   |  RESET|
    * |-----------------------------------------------------------|
-   * |     |   |   |   |   |   |   |   |   |   |   |   |BL |Stay |
+   * |     |Hom|Up |End|   |   |   | 7 | 8 | 9 | + |   |BL |Stay |
    * |-----------------------------------------------------------|
-   * |      |   |   |   |   |   |   |       |   |   |   |        |
+   * |      |Lft|Dwn|Rgh|   |   |   | 4 | 5 | 6 |Ent|   |        |
    * |-----------------------------------------------------------|
-   * |        | F1|F2 | F3|F4 | F5| F6| F7| F8|   |   |          |
+   * |        |   |   |   |   |   |   | 1 | 2 | 3 |Ent|          |
    * |-----------------------------------------------------------|
-   * |    |    |    |                        |    |    |    |    |
+   * |    |    |    |                   0    | 00 | .  |    |    |
    * `-----------------------------------------------------------'
    */
 [_TAB] = KEYMAP_ANSI(
   KC_GRV,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_KP_EQUAL, KC_KP_SLASH, KC_KP_ASTERISK, KC_KP_MINUS, KC_TRNS, KC_TRNS, RESET,   \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_PLUS, BL_DEC,  TO(_BL), TO(_TAB), \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_KP_4, KC_KP_5, KC_KP_6, KC_KP_ENTER, KC_TRNS,          KC_TRNS, \
-  KC_TRNS, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, KC_KP_1, KC_KP_2, KC_KP_3, KC_KP_ENTER,                   KC_TRNS, \
-  KC_TRNS, KC_TRNS, KC_TRNS,                            KC_KP_0,                            KC_00, KC_KP_DOT, KC_TRNS, KC_TRNS),
+  KC_TRNS, KC_HOME, KC_UP,   KC_END,  KC_TRNS, KC_TRNS, KC_TRNS, KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_PLUS, KC_TRNS,  TO(_BL), TO(_TAB), \
+  KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS, KC_TRNS, KC_KP_4, KC_KP_5, KC_KP_6, KC_KP_ENTER, KC_TRNS,          KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_KP_1, KC_KP_2, KC_KP_3, KC_KP_ENTER,                   KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS,                            KC_KP_0,                            KC_KP_00, KC_KP_DOT, KC_TRNS, KC_TRNS),
 };
 
 enum function_id {
