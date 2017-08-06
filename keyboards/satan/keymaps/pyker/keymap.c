@@ -26,9 +26,9 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 #define _BL 0
-#define _SPC 1
-#define _TAB 2
-#define _WORLD 3
+#define _WORLD 1
+#define _SPC 2
+#define _TAB 3
 
 // dual-role shortcuts
 #define TABDUAL   LT(_TAB, KC_TAB)
@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_SPC] = KEYMAP_ANSI(
   KC_PSCR, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,    KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_DEL,  \
   KC_TRNS, KC_TRNS, KC_UP,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_UP,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,\
-  KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT,  KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS,          TO(_BL), \
+  KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT,  KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS,          TG(_SPC), \
   KC_TRNS, KC_TRNS, KC_APP,  KC_TRNS, KC_VOLU, KC_VOLD, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,                   KC_TRNS, \
   KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS,                             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
 
@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_TAB] = KEYMAP_ANSI(
   KC_TRNS, BL_1,    BL_3,    BL_5,    BL_7,    BL_9,    BL_0   , KC_KP_EQUAL, KC_KP_SLASH, KC_KP_ASTERISK, KC_KP_MINUS, KC_TRNS, KC_TRNS, KC_TRNS,   \
   KC_TRNS, KC_HOME, KC_UP,   KC_END,  KC_TRNS, KC_TRNS, KC_TRNS, KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_PLUS, KC_TRNS,  KC_TRNS, KC_TRNS, \
-  KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS, KC_TRNS, KC_KP_4, KC_KP_5, KC_KP_6, KC_KP_ENTER, KC_TRNS,          TO(_BL), \
+  KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_TRNS, KC_TRNS, KC_KP_4, KC_KP_5, KC_KP_6, KC_KP_ENTER, KC_TRNS,          TG(_TAB), \
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_KP_1, KC_KP_2, KC_KP_3, KC_KP_ENTER,                   KC_TRNS, \
   KC_TRNS, KC_TRNS, KC_TRNS,                            KC_KP_0,                            KC_KP_00, KC_KP_DOT, KC_TRNS, KC_TRNS),
 
@@ -116,10 +116,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 [_WORLD] = KEYMAP_ANSI(
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, RESET,   \
-  TO(_TAB),KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TO(_TAB),TO(_SPC), KC_TRNS, \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          TO(_BL), \
+  TG(_TAB),KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TG(_TAB),TG(_SPC), KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          TG(_BL), \
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                   KC_TRNS, \
-  KC_TRNS, KC_TRNS, KC_TRNS,                            TO(_SPC),                           KC_M, KC_TRNS, KC_TRNS, KC_TRNS),
+  KC_TRNS, KC_TRNS, KC_TRNS,                            TG(_SPC),                           KC_M, KC_TRNS, KC_TRNS, KC_TRNS),
 };
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
