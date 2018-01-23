@@ -13,6 +13,7 @@ extern keymap_config_t keymap_config;
 #define _DVORAK 2
 #define _NUMBER 3
 #define _SYMBOL 4
+#define _MACRO 5
 #define _ADJUST 16
 
 enum custom_keycodes {
@@ -21,6 +22,7 @@ enum custom_keycodes {
   DVORAK,
   NUMBER,
   SYMBOL,
+  MACRO,
   ADJUST,
   EMAIL,
   NEWTAB
@@ -51,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
   KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , \
-  KC_LCTL, KC_LALT, KC_LGUI, EMAIL,   NUMBER,  LT(_SYMBOL, KC_SPC),  LT(_NUMBER, KC_SPC),  SYMBOL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
+  KC_LCTL, KC_LALT, KC_LGUI, MACRO,   NUMBER,  LT(_SYMBOL, KC_SPC),  LT(_NUMBER, KC_SPC),  SYMBOL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
 ),
 
 /* Colemak
@@ -138,6 +140,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    _______, _______, _______, _______, _______, _______, _______, _______, KC_WBAK, ALTG(KC_DOWN), ALTG(KC_UP), KC_WFWD  \
 ),
 
+/* Macro layer */
+[_SYMBOL] = KEYMAP( \
+   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+   _______, _______, EMAIL,   _______, NEWTAB,  _______, _______, _______, _______, _______, _______, _______, \
+   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
+),
+
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
  * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
@@ -215,6 +226,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case SYMBOL:
       if (record->event.pressed) {
         layer_on(_SYMBOL);
+        update_tri_layer(_NUMBER, _SYMBOL, _ADJUST);
+      } else {
+        layer_off(_SYMBOL);
+        update_tri_layer(_NUMBER, _SYMBOL, _ADJUST);
+      }
+      return false;
+      break;
+    case MACRO:
+      if (record->event.pressed) {
+        layer_on(_MACRO);
         update_tri_layer(_NUMBER, _SYMBOL, _ADJUST);
       } else {
         layer_off(_SYMBOL);
