@@ -22,7 +22,8 @@ enum custom_keycodes {
   LOWER,
   RAISE,
   ADJUST,
-  EMAIL
+  EMAIL,
+  NEWTAB
 };
 
 
@@ -110,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = KEYMAP( \
   KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,         KC_F10,      KC_F11, \
-  _______, _______, _______, _______, _______,  _______, _______, KC_UNDS, KC_PLUS, KC_EQL,        KC_MINS,     _______, \
+  _______, _______, _______, _______, _______,  NEWTAB,  _______, KC_UNDS, KC_PLUS, KC_EQL,        KC_MINS,     _______, \
   _______, _______, _______, _______, _______,  _______, _______, _______, _______, ALTG(KC_L),    KC_PIPE,     _______, \
   _______, _______, _______, _______, _______,  _______, _______, _______, KC_LCBR, KC_RCBR,       KC_BSLS,     _______, \
   _______, _______, _______, _______, _______,  _______, _______, _______, KC_HOME, ALTG(KC_DOWN), ALTG(KC_UP), KC_END \
@@ -131,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *///not used
  [_RAISE] = KEYMAP( \
    KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,         KC_F10,      KC_F11, \
-   _______, _______, _______, _______, _______,  _______, _______, KC_UNDS, KC_PLUS, KC_EQL,        KC_MINS,     _______, \
+   _______, _______, _______, _______, _______,  NEWTAB,  _______, KC_UNDS, KC_PLUS, KC_EQL,        KC_MINS,     _______, \
    _______, _______, _______, _______, _______,  _______, _______, _______, _______, ALTG(KC_L),    KC_PIPE,     _______, \
    _______, _______, _______, _______, _______,  _______, _______, _______, KC_LCBR, KC_RCBR,       KC_BSLS,     _______, \
    _______, _______, _______, _______, _______,  _______, _______, _______, KC_HOME, ALTG(KC_DOWN), ALTG(KC_UP), KC_END \
@@ -232,6 +233,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case EMAIL:
       if (record->event.pressed)
         SEND_STRING("Gareth@ceberos.id.au");
+      return false;
+      break;
+    case NEWTAB:
+      if (record->event.pressed)
+        SEND_STRING(SS_LCTRL("ctv\n"));
+
       return false;
       break;
   }
