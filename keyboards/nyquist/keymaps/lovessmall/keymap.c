@@ -25,8 +25,26 @@ enum custom_keycodes {
   MACRO,
   ADJUST,
   EMAIL,
-  NEWTAB
+  NEWTAB,
+  FINDALL,
+  TRAINZ,
+  TREB00T,
+  TRELOAD,
+  TFTS,
+  TCPU,
+  TICCISR,
+  TICCRX,
+  TICCTX,
+  K1441,
+  K4321,
+  DETECT,
+  PROGRM,
+  REMISR,
+  PLESS,
+  ASSRT,
 };
+
+#define REPLACE LCTL(KC_EQUAL)
 
 
 // Fillers to make layering more clear
@@ -49,11 +67,62 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = KEYMAP( \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
-  KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , \
-  KC_LCTL, KC_LALT, KC_LGUI, MACRO,   NUMBER,  LT(_SYMBOL, KC_SPC),  LT(_NUMBER, KC_SPC),  SYMBOL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
+  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                KC_6,                KC_7,   KC_8,    KC_9,    KC_0,    KC_BSPC, \
+  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                KC_Y,                KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC, \
+  KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                KC_H,                KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                KC_N,                KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , \
+  KC_LCTL, KC_LALT, KC_LGUI, MACRO,   NUMBER,  LT(_SYMBOL, KC_SPC), LT(_NUMBER, KC_SPC), SYMBOL, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
+),
+
+/* Number
+ * ,-----------------------------------------------------------------------------------.
+ * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |  _   |   +  |   =  |   -  | Del  |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      | Lock |   |  |      |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |  {   |  }   |  \   |Enter |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |      | Home |scrnDn|scrnUp| End  |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_NUMBER] = KEYMAP( \
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       _______,     _______, \
+  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,          KC_0,        KC_DEL,  \
+  _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______, _______, KC_LCBR, KC_RCBR,       KC_COLN,     _______, \
+  _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______,       _______,     _______, \
+  _______, _______, _______, _______, _______, _______, _______, _______, KC_WBAK, ALTG(KC_DOWN), ALTG(KC_UP), KC_WFWD  \
+),
+
+/* Symbol
+ * ,-----------------------------------------------------------------------------------.
+ * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |  _   |   +  |   =  |   -  | Del  |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      | Lock |   |  |      |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |  {   |  }   |  \   |Enter |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |      | Home |scrnDn|scrnUp| End  |
+ * `-----------------------------------------------------------------------------------'
+ */
+ [_SYMBOL] = KEYMAP( \
+   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       _______,     _______, \
+   KC_TILD, S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_6), S(KC_7), S(KC_8), S(KC_9),       S(KC_0),     KC_DEL,  \
+   _______, _______, _______, KC_BSLS, _______, KC_PGUP, KC_HOME, _______, KC_LBRC, KC_RBRC,       KC_COLN,     KC_DQUO, \
+   _______, _______, _______, KC_MINS, KC_EQL,  KC_PGDN, KC_END,  _______, KC_LABK, KC_RABK,       KC_QUES,     _______, \
+   _______, _______, _______, _______, _______, _______, _______, _______, KC_WBAK, ALTG(KC_DOWN), ALTG(KC_UP), KC_WFWD  \
+),
+
+/* Macro layer */
+[_MACRO] = KEYMAP( \
+   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+   TICCTX , TICCRX , EMAIL,   TRELOAD, TREB00T, NEWTAB,  _______, _______, _______, _______, TRAINZ,  _______, \
+   TICCISR, K4321  , K1441  , TFTS,    FINDALL, ASSRT  , _______, _______, _______, PLESS  , _______, _______, \
+   _______, TCPU   , DETECT , REPLACE, REMISR,  PROGRM,  _______, _______, _______, _______, _______, _______, \
+   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 ),
 
 /* Colemak
@@ -96,57 +165,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH, \
   KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT , \
   KC_LCTL, KC_LALT, KC_LGUI, EMAIL,   NUMBER,  KC_SPC,  KC_SPC,  SYMBOL,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
-),
-
-/* Lower
- * ,-----------------------------------------------------------------------------------.
- * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |  _   |   +  |   =  |   -  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      | Lock |   |  |      |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |  {   |  }   |  \   |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Home |scrnDn|scrnUp| End  |
- * `-----------------------------------------------------------------------------------'
- */
-[_NUMBER] = KEYMAP( \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       _______,     _______, \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,          KC_0,        KC_DEL,  \
-  _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______, _______, _______, _______,       _______,     _______, \
-  _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______,       _______,     _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_WBAK, ALTG(KC_DOWN), ALTG(KC_UP), KC_WFWD  \
-),
-
-/* Raise
- * ,-----------------------------------------------------------------------------------.
- * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |  _   |   +  |   =  |   -  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      | Lock |   |  |      |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |  {   |  }   |  \   |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Home |scrnDn|scrnUp| End  |
- * `-----------------------------------------------------------------------------------'
- *///not used
- [_SYMBOL] = KEYMAP( \
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       _______,     _______, \
-   KC_GRV,  S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_6), S(KC_7), S(KC_8), S(KC_9),       S(KC_0),     KC_DEL,  \
-   _______, _______, _______, KC_BSLS, _______, KC_PGUP, KC_HOME, _______, KC_LBRC, KC_RBRC,       _______,     _______, \
-   _______, _______, _______, KC_MINS, KC_EQL,  KC_PGDN, KC_END,  _______, _______, _______,       _______,     _______, \
-   _______, _______, _______, _______, _______, _______, _______, _______, KC_WBAK, ALTG(KC_DOWN), ALTG(KC_UP), KC_WFWD  \
-),
-
-/* Macro layer */
-[_SYMBOL] = KEYMAP( \
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-   _______, _______, EMAIL,   _______, NEWTAB,  _______, _______, _______, _______, _______, _______, _______, \
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 ),
 
 /* Adjust (Lower + Raise)
@@ -236,10 +254,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case MACRO:
       if (record->event.pressed) {
         layer_on(_MACRO);
-        update_tri_layer(_NUMBER, _SYMBOL, _ADJUST);
       } else {
-        layer_off(_SYMBOL);
-        update_tri_layer(_NUMBER, _SYMBOL, _ADJUST);
+        layer_off(_MACRO);
       }
       return false;
       break;
@@ -253,15 +269,98 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case EMAIL:
       if (record->event.pressed)
-        SEND_STRING("Gareth@ceberos.id.au");
+        SEND_STRING("gareth@ceberos.id.au");
       return false;
       break;
     case NEWTAB:
       if (record->event.pressed)
         SEND_STRING(SS_LCTRL("ctv\n"));
-
       return false;
       break;
+    case TRAINZ:
+      if (record->event.pressed)
+        SEND_STRING("\npassword trainz\n");
+      return false;
+      break;
+    case FINDALL:
+      if (record->event.pressed)
+        SEND_STRING( SS_LCTRL("F")SS_LALT("s") );
+      return false;
+      break;
+    case TREB00T:
+      if (record->event.pressed)
+        SEND_STRING( "\npassword trainz\nreboot\n" );
+      return false;
+      break;
+    case TRELOAD:
+      if (record->event.pressed)
+        SEND_STRING( "\npassword trainz\nreload\n" );
+      return false;
+      break;
+    case TFTS:
+      if (record->event.pressed)
+        SEND_STRING( "\npassword trainz\nfts\n" );
+      return false;
+      break;
+    case TCPU:
+      if (record->event.pressed)
+        SEND_STRING( "\ntrace cpu\n" );
+      return false;
+      break;
+    case K4321:
+      if (record->event.pressed)
+        SEND_STRING( "\npassword trainz\nlocal key 4 3 2 1\n" );
+      return false;
+      break;
+    case K1441:
+      if (record->event.pressed)
+        SEND_STRING( "\npassword trainz\nlocal key 14 41 a4 4a\n" );
+      return false;
+      break;
+    case TICCISR:
+      if (record->event.pressed)
+        SEND_STRING( "\ntrace iccisr\n" );
+      return false;
+      break;
+    case TICCTX:
+      if (record->event.pressed)
+        SEND_STRING( "\ntrace icctp\n" );
+      return false;
+      break;
+    case TICCRX:
+      if (record->event.pressed)
+        SEND_STRING( "\ntrace iccrp\n" );
+      return false;
+      break;
+    case DETECT:
+      if (record->event.pressed)
+        SEND_STRING( "\ntrace detector\n" );
+      return false;
+      break;
+    case PROGRM:
+      if (record->event.pressed)
+        SEND_STRING( SS_LCTRL("p") );
+        wait_ms(500);
+        SEND_STRING( "\t\n" );
+      return false;
+      break;
+    case REMISR:
+      if (record->event.pressed)
+        SEND_STRING( "q"SS_LCTRL("c")SS_TAP(X_UP)"\n" );
+      return false;
+      break;
+    case PLESS:
+      if (record->event.pressed)
+        SEND_STRING( SS_LSFT("\\")"less\n" );
+      return false;
+      break;
+    case ASSRT:
+      if (record->event.pressed)
+        SEND_STRING( "/*lint -e{9034} */ assert( pBuf ); //Using the ASSERT that doesn't need the exception makes PCLint not see that we've checked for null pointers" );
+      return false;
+      break;
+
+
   }
   return true;
 }
