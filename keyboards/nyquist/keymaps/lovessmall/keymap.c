@@ -271,7 +271,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case EMAIL:
       if (record->event.pressed)
-        SEND_STRING("gareth@ceberos.id.au");
+        SEND_STRING("gareth@cerberos.id.au");
       return false;
       break;
     case NEWTAB:
