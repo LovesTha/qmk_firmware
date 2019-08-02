@@ -42,6 +42,8 @@ enum custom_keycodes {
   REMISR,
   PLESS,
   ASSRT,
+  TOLEFT,
+  TORIGHT,
 };
 
 #define REPLACE LCTL(KC_EQUAL)
@@ -67,11 +69,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT( \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,   KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_BSPC, \
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC, \
-  KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,   KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_BSLASH, \
-  KC_LCTL, KC_LALT, KC_LGUI, MACRO,   NUMBER,  KC_ENT, KC_SPC, SYMBOL, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
+  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,           KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_BSPC, \
+  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,           KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC, \
+  KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,           KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,           KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_BSLASH, \
+  KC_LCTL, KC_LALT, KC_LGUI, MACRO,   NUMBER,  LCTL_T(KC_ENT), KC_SPC, SYMBOL, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
 ),
 
 /* Number
@@ -113,16 +115,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    KC_TILD, S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_6), S(KC_7), S(KC_8), S(KC_9),       S(KC_0),     KC_DEL,  \
    _______, _______, _______, KC_BSLS, _______, KC_PGUP, KC_HOME, _______, KC_LBRC, KC_RBRC,       KC_COLN,     KC_DQUO, \
    _______, _______, _______, KC_MINS, KC_EQL,  KC_PGDN, KC_END,  _______, KC_LABK, KC_RABK,       KC_QUES,     KC_PIPE, \
-   _______, _______, _______, _______, _______, _______, _______, _______, KC_WBAK, KC_PGDN,       KC_PGUP,     KC_WFWD  \
+   _______, _______, _______, _______, _______, _______, _______, _______, TOLEFT , KC_PGDN,       KC_PGUP,     TORIGHT  \
 ),
 
 /* Macro layer */
 [_MACRO] = LAYOUT( \
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-   TICCTX , TICCRX , EMAIL,   TRELOAD, TREB00T, NEWTAB,  _______, _______, _______, _______, TRAINZ,  _______, \
-   TICCISR, K4321  , K1441  , TFTS,    FINDALL, ASSRT  , _______, _______, _______, PLESS  , _______, _______, \
-   _______, TCPU   , DETECT , REPLACE, REMISR,  PROGRM,  _______, _______, _______, _______, _______, KC_PIPE, \
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
+   KC_NLCK, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+   _______, KC_KP_7, KC_KP_8, KC_KP_9, TREB00T, NEWTAB , _______, _______, _______, _______, TRAINZ,  _______, \
+   _______, KC_KP_4, KC_KP_5, KC_KP_6, FINDALL, _______, _______, _______, K1441  , PLESS  , _______, _______, \
+   _______, KC_KP_1, KC_KP_2, KC_KP_3, _______, PROGRM , _______, _______, _______, _______, _______, KC_PIPE, \
+   _______, KC_PDOT, KC_KP_0, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 ),
 
 /* Colemak
@@ -352,6 +354,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case PLESS:
       if (record->event.pressed)
         SEND_STRING( SS_LSFT("\\")"less\n" );
+      return false;
+      break;
+    case TOLEFT:
+      if (record->event.pressed)
+        SEND_STRING( SS_LGUI( SS_LSFT( SS_TAP(X_LEFT) ) ) );
+      return false;
+      break;
+    case TORIGHT:
+      if (record->event.pressed)
+        SEND_STRING( SS_LGUI( SS_LSFT( SS_TAP(X_RIGHT) ) ) );
       return false;
       break;
     case ASSRT:

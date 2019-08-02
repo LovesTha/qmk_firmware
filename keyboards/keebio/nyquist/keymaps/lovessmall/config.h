@@ -27,12 +27,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 
-#define MASTER_LEFT
-// #define _MASTER_RIGHT
+// #define MASTER_LEFT
+#define MASTER_RIGHT
 // #define EE_HANDS
 
 #define PERMISSIVE_HOLD
-#define TAPPING_TERM 90
+#define TAPPING_TERM 300
 
 #undef RGBLED_NUM
 #define RGBLIGHT_ANIMATIONS
