@@ -35,6 +35,8 @@ enum custom_keycodes {
   TICCISR,
   TICCRX,
   TICCTX,
+  TRICCM,
+  TRICCS,
   K1441,
   K4321,
   DETECT,
@@ -113,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_SYMBOL] = LAYOUT( \
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       _______,     _______, \
    KC_TILD, S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_6), S(KC_7), S(KC_8), S(KC_9),       S(KC_0),     KC_DEL,  \
-   _______, _______, _______, KC_BSLS, _______, KC_PGUP, KC_HOME, _______, KC_LBRC, KC_RBRC,       KC_COLN,     KC_DQUO, \
+   _______, _______, _______, KC_BSLS, _______, KC_PGUP, KC_HOME, KC_PSCR, KC_LBRC, KC_RBRC,       KC_COLN,     KC_DQUO, \
    _______, _______, _______, KC_MINS, KC_EQL,  KC_PGDN, KC_END,  _______, KC_LABK, KC_RABK,       KC_QUES,     KC_PIPE, \
    _______, _______, _______, _______, _______, _______, _______, _______, TOLEFT , KC_PGDN,       KC_PGUP,     TORIGHT  \
 ),
@@ -271,7 +273,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case EMAIL:
       if (record->event.pressed)
-        SEND_STRING("gareth@ceberos.id.au");
+        SEND_STRING("gareth@cerberos.id.au");
       return false;
       break;
     case NEWTAB:
@@ -354,6 +356,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case PLESS:
       if (record->event.pressed)
         SEND_STRING( SS_LSFT("\\")"less\n" );
+      return false;
+      break;
+    case TRICCM:
+      if (record->event.pressed)
+        SEND_STRING( "\ntrace icctp\n" );
+      return false;
+      break;
+    case TRICCS:
+      if (record->event.pressed)
+        SEND_STRING( "\ntrace icc\ntrace iccisr\n" );
       return false;
       break;
     case TOLEFT:
