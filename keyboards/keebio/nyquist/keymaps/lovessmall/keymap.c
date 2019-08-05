@@ -123,10 +123,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Macro layer */
 [_MACRO] = LAYOUT( \
    KC_NLCK, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-   _______, KC_KP_7, KC_KP_8, KC_KP_9, TREB00T, NEWTAB , _______, _______, _______, _______, TRAINZ,  _______, \
-   _______, KC_KP_4, KC_KP_5, KC_KP_6, FINDALL, _______, _______, _______, K1441  , PLESS  , _______, _______, \
-   _______, KC_KP_1, KC_KP_2, KC_KP_3, _______, PROGRM , _______, _______, _______, _______, _______, KC_PIPE, \
-   _______, KC_PDOT, KC_KP_0, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
+   _______, KC_7   , KC_8   , KC_9   , TREB00T, NEWTAB , _______, _______, _______, _______, TRAINZ,  _______, \
+   _______, KC_4   , KC_5   , KC_6   , FINDALL, _______, _______, _______, K1441  , PLESS  , _______, _______, \
+   _______, KC_1   , KC_2   , KC_3   , _______, PROGRM , _______, _______, _______, _______, _______, KC_PIPE, \
+   _______, KC_DOT , KC_0   , _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 ),
 
 /* Colemak
@@ -383,8 +383,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         SEND_STRING( "/*lint -e{9034} */ assert( pBuf ); //Using the ASSERT that doesn't need the exception makes PCLint not see that we've checked for null pointers" );
       return false;
       break;
-
-
   }
   return true;
 }
