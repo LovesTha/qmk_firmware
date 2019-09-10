@@ -116,9 +116,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Macro layer */
 [_MACRO] = LAYOUT( \
-   _______, KC_7   , KC_8   , KC_9   , TREB00T, NEWTAB , _______, _______, _______, _______, TRAINZ,  _______, \
-   _______, KC_4   , KC_5   , KC_6   , FINDALL, _______, _______, _______, K1441  , PLESS  , _______, _______, \
-   _______, KC_1   , KC_2   , KC_3   , KC_BTN3, PROGRM , _______, _______, KC_BTN1, KC_BTN2, KC_BTN3, KC_PIPE, \
+   _______, KC_7   , KC_8   , KC_9   , TREB00T, NEWTAB , RGB_M_B, RGB_M_R, RGB_M_SN, RGB_M_K, TRAINZ,  RGB_TOG, \
+   _______, KC_4   , KC_5   , KC_6   , FINDALL, _______, RGB_VAI, _______, K1441  , PLESS  , _______, _______, \
+   _______, KC_1   , KC_2   , KC_3   , KC_BTN3, PROGRM , RGB_VAD, _______, KC_BTN1, KC_BTN2, KC_BTN3, KC_PIPE, \
    _______, KC_DOT , KC_0   , _______, _______, _______, _______, _______, _______, _______, _______, _______, \
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ \
 ),
