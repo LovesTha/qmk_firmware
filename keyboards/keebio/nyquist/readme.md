@@ -1,3 +1,7 @@
+
+make keebio/nyquist/rev3:smallPretty:dfu
+
+
 Nyquist
 =======
 
