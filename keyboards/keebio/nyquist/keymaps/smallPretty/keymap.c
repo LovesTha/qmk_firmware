@@ -27,9 +27,6 @@ enum custom_keycodes {
   EMAIL,
   NEWTAB,
   FINDALL,
-  TRAINZ,
-  TREB00T,
-  TRELOAD,
   TFTS,
   TCPU,
   TICCISR,
@@ -73,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT( \
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,           KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,  \
   KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,           KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,  \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,           KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_BSLASH,\
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,           KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_BSLASH),\
   KC_LCTL, KC_LALT, KC_LGUI, MACRO,   NUMBER,  LCTL_T(KC_ENT), KC_SPC, SYMBOL, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  \
   _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______ \
 ),
@@ -118,11 +115,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Macro layer */
 [_MACRO] = LAYOUT( \
-   _______, KC_7   , KC_8   , KC_9   , TREB00T, NEWTAB , RGB_M_B, RGB_M_R, RGB_M_SN, RGB_M_K, TRAINZ,  RGB_TOG, \
-   KC_CAPS, KC_4   , KC_5   , KC_6   , FINDALL, _______, RGB_VAI, _______, K1441  , PLESS  , _______, _______, \
-   _______, KC_1   , KC_2   , KC_3   , KC_BTN3, PROGRM , RGB_VAD, _______, KC_BTN1, KC_BTN2, KC_BTN3, KC_PIPE, \
-   _______, KC_DOT , KC_0   , _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ \
+   _______, KC_7   , KC_8   , KC_9   , _______, NEWTAB , RGB_M_B, RGB_M_R, RGB_M_SN, RGB_M_K, _______, RGB_TOG, \
+   KC_CAPS, KC_4   , KC_5   , KC_6   , FINDALL, _______, RGB_VAI, _______, K1441  ,  PLESS  , _______, _______, \
+   _______, KC_1   , KC_2   , KC_3   , KC_BTN3, PROGRM , RGB_VAD, _______, KC_BTN1,  KC_BTN2, KC_BTN3, KC_PIPE, \
+   _______, KC_DOT , KC_0   , _______, _______, _______, _______, _______, _______,  _______, _______, _______, \
+   _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______  \
 ),
 
 /* Colemak
@@ -271,29 +268,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         SEND_STRING(SS_LCTRL("ctv\n"));
       return false;
       break;
-    case TRAINZ:
-      if (record->event.pressed)
-        SEND_STRING("\npassword trainz\n");
-      return false;
-      break;
     case FINDALL:
       if (record->event.pressed)
         SEND_STRING( SS_LCTRL("F")SS_LALT("s") );
-      return false;
-      break;
-    case TREB00T:
-      if (record->event.pressed)
-        SEND_STRING( "\npassword trainz\nreboot\n" );
-      return false;
-      break;
-    case TRELOAD:
-      if (record->event.pressed)
-        SEND_STRING( "\npassword trainz\nreload\n" );
-      return false;
-      break;
-    case TFTS:
-      if (record->event.pressed)
-        SEND_STRING( "\npassword trainz\nfts\n" );
       return false;
       break;
     case TCPU:
@@ -303,12 +280,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case K4321:
       if (record->event.pressed)
-        SEND_STRING( "\npassword trainz\nlocal key 4 3 2 1\n" );
+        SEND_STRING( "\nlocal key 4 3 2 1\n" );
       return false;
       break;
     case K1441:
       if (record->event.pressed)
-        SEND_STRING( "\npassword trainz\nlocal key 14 41 a4 4a\n" );
+        SEND_STRING( "\nlocal key 14 41 a4 4a\n" );
       return false;
       break;
     case TICCISR:
