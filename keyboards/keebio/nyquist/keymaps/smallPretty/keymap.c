@@ -45,6 +45,7 @@ enum custom_keycodes {
   TORIGHT,
   IPV4,
   MASK,
+  CCOMENT,
 };
 
 #define REPLACE LCTL(KC_EQUAL)
@@ -116,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Macro layer */
 [_MACRO] = LAYOUT( \
    _______, KC_7   , KC_8   , KC_9   , _______, NEWTAB , RGB_M_B, RGB_M_R, RGB_M_SN, RGB_M_K, _______, RGB_TOG, \
-   KC_CAPS, KC_4   , KC_5   , KC_6   , FINDALL, _______, RGB_VAI, _______, K1441  ,  PLESS  , _______, _______, \
+   KC_CAPS, KC_4   , KC_5   , KC_6   , FINDALL, CCOMENT, RGB_VAI, _______, K1441  ,  PLESS  , _______, _______, \
    _______, KC_1   , KC_2   , KC_3   , KC_BTN3, PROGRM , RGB_VAD, _______, KC_BTN1,  KC_BTN2, KC_BTN3, KC_PIPE, \
    _______, KC_DOT , KC_0   , _______, _______, _______, _______, _______, _______,  _______, _______, _______, \
    _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______  \
@@ -358,6 +359,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case MASK:
       if (record->event.pressed)
         SEND_STRING( "255.255.255.0" );
+      return false;
+      break;
+    case CCOMENT:
+      if (record->event.pressed)
+        SEND_STRING( "/*"SS_TAP(X_END)"*/");
       return false;
       break;
   }
