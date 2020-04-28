@@ -57,36 +57,14 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* Qwerty
- * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Adjust| Ctrl | Alt  | GUI  |Lower |Space |Space |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
- */
 [_QWERTY] = LAYOUT( \
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,           KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,  \
-  KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,           KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,  \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,           KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_BSLASH),\
-  KC_LCTL, KC_LALT, KC_LGUI, MACRO,   NUMBER,  LCTL_T(KC_ENT), KC_SPC, SYMBOL, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  \
-  _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______ \
+  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                             KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,  \
+  KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                             KC_H,    KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,  \
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                             KC_N,    KC_M,   KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_BSLASH),\
+  KC_LCTL, KC_LALT, KC_LGUI, MACRO,   NUMBER,  LT(_SYMBOL,KC_ENT), LT(_NUMBER,KC_SPC),  SYMBOL, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  \
+  _______, _______, _______, _______, _______, _______,                       _______, _______, _______, _______, _______, _______ \
 ),
 
-/* Number
- * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |  _   |   +  |   =  |   -  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      | Lock |   |  |      |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |  {   |  }   |  \   |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Home |scrnDn|scrnUp| End  |
- * `-----------------------------------------------------------------------------------'
- */
 [_NUMBER] = LAYOUT( \
   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,  \
   RESET  , KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   MASK,    IPV4,    KC_LCBR, KC_RCBR, KC_COLN, _______, \
@@ -95,22 +73,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 ),
 
-/* Symbol
- * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |  _   |   +  |   =  |   -  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      | Lock |   |  |      |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |  {   |  }   |  \   |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Home |scrnDn|scrnUp| End  |
- * `-----------------------------------------------------------------------------------'
- */
+
  [_SYMBOL] = LAYOUT( \
    KC_TILD, S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_6), S(KC_7), S(KC_8), S(KC_9), S(KC_0), KC_DEL,  \
-   _______, _______, _______, KC_BSLS, _______, KC_PGUP, KC_HOME, KC_PSCR, KC_LBRC, KC_RBRC, KC_COLN, KC_DQUO, \
-   _______, _______, _______, KC_MINS, KC_EQL,  KC_PGDN, KC_END,  RESET  , KC_LABK, KC_RABK, KC_QUES, KC_PIPE, \
-   _______, _______, _______, _______, _______, _______, KC_BTN3, _______, TOLEFT , KC_PGDN, KC_PGUP, TORIGHT, \
+   _______, DM_REC1, KC_Q,    KC_BSLS, _______, KC_PGUP, KC_HOME, KC_PSCR, KC_LBRC, KC_RBRC, KC_COLN, KC_DQUO, \
+   _______, DM_REC2, _______, KC_MINS, KC_EQL,  KC_PGDN, KC_END,  RESET  , KC_LABK, KC_RABK, KC_QUES, KC_PIPE, \
+   _______, DM_RSTP, _______, DM_PLY1, DM_PLY2, _______, _______, _______, TOLEFT , KC_PGDN, KC_PGUP, TORIGHT, \
    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 ),
 
