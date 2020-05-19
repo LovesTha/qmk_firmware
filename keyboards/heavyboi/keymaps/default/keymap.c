@@ -32,10 +32,10 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
     [_BASE] = LAYOUT(
-      KC_TAB,  KC_Q, KC_W, KC_E,   KC_R,   KC_T,     KC_Y,   KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-      KC_ESC,  KC_A, KC_S, KC_D,   KC_F,   KC_G,     KC_H,   KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-      KC_LSFT, MT(MOD_LCTL, KC_Z), MT(MOD_LALT, KC_X), KC_C,   KC_V,   KC_B,     KC_N,   KC_M,    KC_COMM, MT(MOD_RALT, KC_DOT),  MT(MOD_RCTL, KC_SLSH), MT(MOD_RSFT, KC_BSLASH),
-                MO(_MACRO), MO(_NUMBER),  LCTL_T(KC_ENT), RCTL_T(KC_SPC), MO(_SYMBOL), MO(_MACRO)
+      MT(MOD_LALT, KC_TAB),  KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I,    KC_O,    KC_P,    MT(MOD_RSFT, KC_BSPC),
+      MT(MOD_LCTL, KC_ESC),  KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K,    KC_L,    KC_SCLN, MT(MOD_RCTL, KC_QUOT),
+      MT(MOD_LSFT, KC_LGUI), KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT,  KC_SLSH, MT(MOD_RSFT, KC_BSLASH),
+                           MO(_MACRO), KC_ENT,MO(_NUMBER), MO(_SYMBOL), KC_SPC, MO(_MACRO)
     ),
     [_NUMBER] = LAYOUT( \
       KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,          KC_0,        KC_DEL,  \
@@ -44,18 +44,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  _______, _______, _______, _______, _______, _______  \
     ),
     [_SYMBOL] = LAYOUT( \
-      KC_TILD, S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_6), S(KC_7), S(KC_8), S(KC_9),       S(KC_0),     KC_DEL,  \
-      _______, _______, _______, KC_BSLS, _______, KC_PGUP, KC_HOME, KC_PSCR, KC_LBRC, KC_RBRC,       KC_COLN,     KC_DQUO, \
-      _______, _______, _______, KC_MINS, KC_EQL,  KC_PGDN, KC_END,  _______, KC_LABK, KC_RABK,       KC_QUES,     KC_PIPE, \
+      KC_TILD, S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_6), S(KC_7), S(KC_8), S(KC_9), S(KC_0), KC_DEL,  \
+      _______, _______, _______, KC_BSLS, _______, KC_PGUP, KC_HOME, KC_PSCR, KC_LBRC, KC_RBRC, KC_COLN, KC_DQUO, \
+      _______, _______, _______, KC_MINS, KC_EQL,  KC_PGDN, KC_END,  _______, KC_LABK, KC_RABK, KC_QUES, KC_PIPE, \
                                  _______, _______, _______, _______, _______, _______ \
    ),
 
    /* Macro layer */
    [_MACRO] = LAYOUT( \
-      _______, KC_7   , KC_8   , KC_9   , _______, RESET,   _______, _______, _______, _______, _______, RESET, \
-      _______, KC_4   , KC_5   , KC_6   , KC_DOT , _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, \
-      _______, KC_1   , KC_2   , KC_3   , KC_0   , _______, _______, _______, KC_BTN1, KC_BTN2, KC_BTN3, KC_PIPE, \
-                                 _______, _______, _______, _______, _______, _______  \
+      _______, KC_7, KC_8, KC_9, _______, _______, _______, _______, _______, _______, _______, KC_DEL, \
+      _______, KC_4, KC_5, KC_6, KC_DOT , _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, \
+      _______, KC_1, KC_2, KC_3, KC_0   , _______, _______, _______, KC_BTN1, KC_BTN2, KC_BTN3, KC_PIPE, \
+                          RESET, _______, _______, _______, _______, RESET  \
    )
 };
 
