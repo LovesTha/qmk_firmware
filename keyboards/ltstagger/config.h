@@ -1,5 +1,6 @@
 /*
 Copyright 2019 Yaotian Feng(Codetector) <codetector@codetector.cn>
+Copyright 2020 Gareth Pye(LovesTha) <gareth@cerberos.id.au>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,13 +22,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VENDOR_ID 0xFEED
 #define PRODUCT_ID 0x1308
 #define DEVICE_VER 0x101
-#define MANUFACTURER ErgoDox
-#define PRODUCT ErgoDox STM
-#define DESCRIPTION ErgoDox STM32 Keyboard
+#define MANUFACTURER LovesTha
+#define PRODUCT ltstagger
+#define DESCRIPTION ltstagger Keyboard
 
-#define MATRIX_ROWS 14
+#define MATRIX_ROWS 12
 #define MATRIX_ROWS_PER_SIDE (MATRIX_ROWS / 2)
-#define MATRIX_COLS 6
+#define MATRIX_COLS 4
 /* key combination for command */
 #define IS_COMMAND() ( \
     keyboard_report->mods == (MOD_BIT(KC_LCTL) | MOD_BIT(KC_RCTL)) || \
