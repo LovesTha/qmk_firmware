@@ -23,13 +23,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VENDOR_ID    0xFEED
 #define PRODUCT_ID   0x0000
 #define DEVICE_VER   0x0001
-#define MANUFACTURER Gareth Pye
+#define MANUFACTURER LovesKeebs
 #define PRODUCT      ltstagger
 
+#define F_SCL 400000L
+
+#define DEBUG_MATRIX_SCAN_RATE
+
 /* key matrix size */
-#define MATRIX_ROWS 12
-#define MATRIX_COLS 4
-#define MATRIX_ROWS_PER_SIDE (MATRIX_ROWS / 2)
+#define MATRIX_ROWS 4
+#define MATRIX_COLS 12
+#define MATRIX_COLS_PER_SIDE (MATRIX_COLS / 2)
 
 /*
  * Keyboard Matrix Assignments

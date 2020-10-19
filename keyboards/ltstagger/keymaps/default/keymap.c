@@ -17,8 +17,7 @@
 
 // Defines names for use in layer keycodes and the keymap
 enum layer_names {
-    _BASE,
-    _FN
+    _BASE
 };
 
 // Defines the keycodes used by our macros in process_record_user
@@ -27,15 +26,21 @@ enum custom_keycodes {
     QMKURL
 };
 
+void keyboard_post_init_user(void) {
+  // Customise these values to desired behaviour
+  debug_enable=true;
+  debug_matrix=true;
+  //debug_keyboard=true;
+  //debug_mouse=true;
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
     [_BASE] = LAYOUT(
-        KC_A,    KC_1,    MO(_FN),
-            KC_TAB,   KC_SPC
-    ),
-    [_FN] = LAYOUT(
-        QMKBEST, QMKURL,  _______,
-            RESET,    XXXXXXX
+      KC_DEL,          KC_Q,        KC_W,          KC_E,    KC_R,    KC_T,                    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,           KC_BSLS,
+      KC_BSPC,         KC_A,        KC_S,          KC_D,    KC_F,    KC_G,                    KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, GUI_T(KC_QUOT),
+      KC_LSFT,         CTL_T(KC_Z), KC_X,          KC_C,    KC_V,    KC_B,                    KC_N,    KC_M,    KC_COMM, KC_DOT, CTL_T(KC_SLSH), KC_RSFT,
+                                                          KC_GRV, KC_BSPC, LALT(KC_LSFT),  KC_LBRC,  KC_ENT,    KC_RCTL
     )
 };
 
@@ -58,5 +63,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
     }
-    return true;
+
+  // If console is enabled, it will print the matrix position and status of each key pressed
+#ifdef CONSOLE_ENABLE
+    uprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed);
+#endif
+  return true;
 }
