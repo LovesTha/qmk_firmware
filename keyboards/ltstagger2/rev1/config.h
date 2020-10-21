@@ -32,9 +32,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COLS 6
 
 // wiring of each half
-#define MATRIX_ROW_PINS { F6, F7, B1, B3 }
-#define MATRIX_COL_PINS { D4, C6, D7, E6, B4, B5 }
-#define DIODE_DIRECTION COL2ROW
+#define MATRIX_COL_PINS { F6, F7, B1, B3, B2, B6 }
+#define MATRIX_ROW_PINS { D4, C6, D7, E6 }
+#define UNUSED_PINS { D0, D1, B2, B6 }
+
+
+#define DIODE_DIRECTION ROW2COL
 
 #define EE_HANDS
 #define SPLIT_USB_DETECT

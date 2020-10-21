@@ -19,6 +19,7 @@ BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration
 MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control
 CONSOLE_ENABLE = yes        # Console for debug
+DEBUG_ENABLE = yes
 COMMAND_ENABLE = yes        # Commands for debug and configuration
 NKRO_ENABLE = no            # Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 BACKLIGHT_ENABLE = no      # Enable keyboard backlight functionality
@@ -35,4 +36,4 @@ SPLIT_KEYBOARD = yes
 
 LAYOUTS = ortho_4x12
 
-DEFAULT_FOLDER = lets_split/rev1
+DEFAULT_FOLDER = ltstagger2/rev1
