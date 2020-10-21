@@ -25,14 +25,14 @@
 #include "wait.h"
 
 #ifndef F_SCL
-#    define F_SCL 400000UL  // SCL frequency
+#    define F_SCL 10000UL  // SCL frequency
 #endif
 
 #define TWBR_val (((F_CPU / F_SCL) - 16) / 2)
 
 void i2c_init(void) {
     TWSR = 0; /* no prescaler */
-    TWBR = (uint8_t)TWBR_val;
+    TWBR = 255;
 
 #ifdef __AVR_ATmega32A__
     // set pull-up resistors on I2C bus pins

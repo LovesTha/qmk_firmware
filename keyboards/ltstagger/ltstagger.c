@@ -21,7 +21,6 @@ i2c_status_t mcp23018_status;
 
 uint8_t init_mcp23018(void) {
     mcp23018_status = 0x20;
-
     print("init_mcp23018\n");
 
     // I2C subsystem
