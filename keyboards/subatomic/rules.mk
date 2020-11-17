@@ -12,8 +12,7 @@ MCU = at90usb1286
 BOOTLOADER = atmel-dfu
 
 # Build Options
-#   change to "no" to disable the options, or define them in the Makefile in 
-#   the appropriate keymap folder that will get included automatically
+#   comment out to disable the options.
 #
 BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration
 MOUSEKEY_ENABLE = no       # Mouse keys
@@ -23,7 +22,7 @@ COMMAND_ENABLE = no        # Commands for debug and configuration
 NKRO_ENABLE = no            # Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 BACKLIGHT_ENABLE = yes      # Enable keyboard backlight functionality
 MIDI_ENABLE = yes            # MIDI controls
-AUDIO_ENABLE = no           # Audio output 
+AUDIO_ENABLE = no           # Audio output
 UNICODE_ENABLE = no         # Unicode
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.

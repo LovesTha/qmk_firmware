@@ -16,6 +16,7 @@ include common.mk
 KEYBOARD_FILESAFE := $(subst /,_,$(KEYBOARD))
 TARGET ?= $(KEYBOARD_FILESAFE)_$(KEYMAP)
 KEYBOARD_OUTPUT := $(BUILD_DIR)/obj_$(KEYBOARD_FILESAFE)
+STM32_PATH := quantum/stm32
 
 # Force expansion
 TARGET := $(TARGET)
