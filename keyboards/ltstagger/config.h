@@ -35,7 +35,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // wiring of each half
 #define MATRIX_COL_PINS { F6, F7, B1, B3, B2, B6 }
 #define MATRIX_ROW_PINS { D4, C6, D7, E6 }
-#define ENCODERS_PAD_C { encoder1c }
+
+#define ENCODERS_PAD_A { F6 }
+#define ENCODERS_PAD_B { F7 }
+#define ENCODERS_PAD_C { E6 }
+
 //#define SPLIT_HAND_PIN D5
 #define EE_HANDS
 #define SPLIT_USB_DETECT
