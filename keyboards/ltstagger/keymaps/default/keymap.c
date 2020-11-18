@@ -32,10 +32,10 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
     [_BASE] = LAYOUT(
-      LALT_T(KC_TAB),  KC_Q, KC_W, KC_E,   KC_R,   KC_T,               KC_Y,   KC_U,    KC_I,    KC_O,   KC_P,    RALT_T(KC_BSPC),
-      LSFT_T(KC_ESC),  KC_A, KC_S, KC_D,   KC_F,   KC_G,               KC_H,   KC_J,    KC_K,    KC_L,   KC_SCLN, RSFT_T(KC_QUOT),
-      MOD_LCTL,        KC_Z, KC_X, KC_C,   KC_V,   KC_B,               KC_N,   KC_M,    KC_COMM, KC_DOT, KC_SLSH, RCTL_T(KC_BSLASH),
-      _______,_______,_______, MO(_MACRO), KC_ENT, MO(_NUMBER), MO(_SYMBOL), KC_SPC, MO(_MACRO), _______,_______,_______
+      LALT_T(KC_TAB),  KC_Q,   KC_W,       KC_E,   KC_R,        KC_T,           KC_Y,   KC_U,    KC_I,    KC_O,   KC_P,    RALT_T(KC_BSPC),
+      LSFT_T(KC_ESC),  KC_A,   KC_S,       KC_D,   KC_F,        KC_G,           KC_H,   KC_J,    KC_K,    KC_L,   KC_SCLN, RSFT_T(KC_QUOT),
+      LCTL_T(KC_TILD), KC_Z,   KC_X,       KC_C,   KC_V,        KC_B,           KC_N,   KC_M,    KC_COMM, KC_DOT, KC_SLSH, RCTL_T(KC_BSLASH),
+      _______,      _______,_______, MO(_MACRO), KC_ENT, MO(_NUMBER),    MO(_SYMBOL), KC_SPC, MO(_MACRO), _______,_______,_______
     ),
     [_NUMBER] = LAYOUT( \
       KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,          KC_0,        KC_DEL,  \
@@ -69,7 +69,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
         }
     }
     else if (index == 1) {
-        // Page up/Page down
+        // Page up/Page down9:17
         if (clockwise) {
             tap_code(KC_PGDN);
         } else {
@@ -79,6 +79,10 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  #ifdef CONSOLE_ENABLE
+    uprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed);
+#endif
+
     switch (keycode) {
         case QMKBEST:
             if (record->event.pressed) {
